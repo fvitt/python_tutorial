@@ -1,21 +1,16 @@
-# Read data file
+# Initialize my data variable
+data = []
+
+# Read and parse the data file
 filename = "data/wxobs20170821.txt"
-datafile = open(filename, 'r')
+with open(filename, 'r') as datafile:
 
-print(datafile.readline())
-print(datafile.readline())
-print(datafile.readline())
-print(datafile.readline())
+    # Read the first three lines (header)
+    for _ in range(3):
+        datafile.readline()
 
-data = datafile.read()
+    # Read and parse the rest of the file
+    for line in datafile:
+        datum = line.split()
+        data.append(datum)
 
-datafile.close()
-
-#print(data)
-#print("data")
-
-with open(filename,'r') as datafile:
-    data = datafile.read()
-
-#print(data)
-print(type(data))
