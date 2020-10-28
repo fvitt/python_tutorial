@@ -1,5 +1,14 @@
+# col name and col indices to read
+columns = {'date':0,'time':1,'tempout':2}
+
+# data types for each (only for non-strings)
+types = {'tempout':float}
+
+
 # Initialize my data variable
-data = {'date':[],'time':[],'tempout':[]}
+data = {}
+for column in columns:
+    data[column] = []
 
 # Read and parse the data file
 filename = "data/wxobs20170821.txt"
@@ -12,7 +21,9 @@ with open(filename, 'r') as datafile:
     # Read and parse the rest of the file
     for line in datafile:
         split_line = line.split()
-        data['date'].append(split_line[0])
-        data['time'].append(split_line[1])
-        data['tempout'].append(float(split_line[2]))
+        for column in columns:
+            i = columns[column]
+            t = types.get(column, str)
+            value = t(split_line[i])
+            data[column].append(value)
 
