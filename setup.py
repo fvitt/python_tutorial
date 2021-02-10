@@ -1,4 +1,4 @@
-import setuptools import setuptools
+from setuptools import setup
 
 setup(
     name="mysci",
@@ -8,4 +8,4 @@ setup(
     author_email="fvitt@ucar.edu",
     packages=["mysci"],
     install_requires=[])
-
+
